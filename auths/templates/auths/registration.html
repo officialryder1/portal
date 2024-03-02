@@ -1,0 +1,59 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>registration form</title>
+	<meta name="viewport" content="width=device.width, innitial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+	
+</head>
+<body>
+
+	<div class="container">
+		<div class="title">Registration</div>
+		<form action="{% url 'register' %}" method="POST">
+			{% csrf_token %}
+			<div class="user-details">
+				<div class="input-box">
+					<span class="details">First name</span>
+					<!-- <input type="text" placeholder="Enter your first name" required> -->
+					{{ form.firstname}}
+				</div>
+					<div class="input-box">
+					<span class="details">last name</span>
+					<!-- <input type="text" placeholder="Enter your last name" required> -->
+					{{ form.last_name }}
+				</div>
+				<div class="input-box">
+					<span class="details">Email</span>
+					<!-- <input type="text" placeholder="Enter your other name" required> -->
+					{{form.email}}
+				</div>
+				<div class="input-box">
+					<span class="details">Reg no </span>
+					{{form.username}}
+				</div>
+				<div class="input-box">
+					<span class="details">Password</span>
+					{{form.password1}}
+				</div>
+				<div class="input-box">
+					<span class="details">Confirm Password</span>
+					<!-- <input type="text" placeholder="Confirm Password"> -->
+					{{form.password2}}
+				</div>
+			</div>
+			<div class="button">
+				<input type="submit" value="submit">
+			</div>
+			{% if form.error %}
+			<div>
+				<h1>There was an error with your form</h1>
+			</div>
+
+			{% endif %}
+		</form>
+	</div>
+
+</body>
+</html>
